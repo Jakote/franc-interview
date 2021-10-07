@@ -10,10 +10,17 @@
             <p><a href="/?username=Kyle">example</a></p>
             <p>Posts can be found <a href="/posts">here</a></p>
             <p>Users and there follows can be found <a href="/users">here</a></p>
+           
         {% else %}
             <p>Your tweets:</p>
             <ul>
-                <li>first tweet</li>
+                {%if tweets %}
+                    {% for t in tweets %}
+                        <li>Tweet by: {{ t.user}} - {{ t.status}} | {{ t.time}}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>first tweet</li>
+                {% endif %}
             </ul>
         {% endif %}
     </body>
